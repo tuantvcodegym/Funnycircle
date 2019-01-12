@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Circle</title>
+</head>
+<body>
+<canvas id="myCanvas" width="700px" height="700px"></canvas>
+<script>
+    function Circle(x,y,radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+    function createCircle() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var circle = new Circle(50,50,30);
+        ctx.beginPath();
+        ctx.arc(circle.x,circle.y,circle.radius, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    function createCircle1() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var radius =Math.floor(Math.random() * 80);                         // ham Math.random() dung de ve hinh tron ban kinh ngau nhien.
+        var circle = new Circle(50, 50, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    function getRandomHex() {
+        return Math.floor(Math.random() * 80);
+    }
+    function getRandomColor() {
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        return "rgb("+ red + "," + green + "," + blue + ")";
+    }
+    function createCircle2() {
+        var ctx = document.getElementById('myCanvas').getContext("2d");
+        var radius = getRandomHex();
+        var color = getRandomColor();
+        var circle = new Circle(100, 100, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+    function createCircle3(){
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var x = Math.random()* window.innerWidth;
+        var y = Math.random() * window.innerHeight;
+        var radius = getRandomHex();
+        var circle = new Circle(x, y, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2*Math.PI);
+        ctx.fillStyle = getRandomColor();
+        ctx.fill();
+    }
+    function nhieuHinhtron() {
+        for(i=0; i<30; i++){
+            createCircle3();
+        }
+    }
+    nhieuHinhtron();
+
+</script>
+</body>
+</html>
